@@ -16,10 +16,10 @@ const requestEpic = (action$) => {
       const _config = createRequest.getConfig();
       const {requestBefore, requestAfter} = _config;
       
-      const {payload, after} = action;
+      const {payload} = action;
       return Observable.concat(
         Observable.of((requestBefore && requestBefore(action)) || NILAction),
-        createRequest(payload, after, action),
+        createRequest(payload, action),
         Observable.of((requestAfter && requestAfter(action)) || NILAction),
       )
         .filter((action) => {

@@ -61,7 +61,7 @@ customAxios.interceptors.request.use((config) => {
   return Promise.reject(error);
 });
 
-const createRequest = (payload, after, action) => {
+const createRequest = (payload, action) => {
   const {responseHandle, errorHandle} = _config;
   const newType = action.oldType || action.type;
   
@@ -73,10 +73,6 @@ const createRequest = (payload, after, action) => {
       const {status} = response;
       const responseData = response.data;
       
-      if (action.after && typeof action.after === 'function') {
-        action.after(responseData, action);
-      }
-  
       if (status >= 200 && status <= 300) {
         return {
           type: newType + 'success',
