@@ -1,6 +1,6 @@
 {
   "name": "inori-request",
-  "version": "1.2.0",
+  "version": "1.4.0",
   "main": "dist/index.js",
   "repository": "https://github.com/YouHan26/wow.git",
   "author": "YouHan26 <youhan26@gmail.com>",
