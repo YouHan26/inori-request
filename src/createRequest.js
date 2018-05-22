@@ -75,7 +75,7 @@ const createRequest = (payload, action) => {
       
       if (status >= 200 && status <= 300) {
         return {
-          type: newType + 'success',
+          type: newType + '_success',
           response,
           data: responseData,
           action,
@@ -84,7 +84,7 @@ const createRequest = (payload, action) => {
         };
       }
       return {
-        type: newType + 'fail',
+        type: newType + '_fail',
         reason: 'server error',
         success: false,
         response,
@@ -94,14 +94,14 @@ const createRequest = (payload, action) => {
     })
     .catch((error) => {
       return Observable.of({
-        type: newType + 'fail',
+        type: newType + '_fail',
         reason: 'network error',
         success: false,
         error,
         ...((errorHandle && errorHandle(error, action)) || {})
       });
     })
-    .startWith({...action, type: newType + 'request'});
+    .startWith({...action, type: newType + '_request'});
 };
 
 createRequest.config = (config) => {
