@@ -39,7 +39,7 @@ const request = {
     const {type, url, method, urlType, params, data, headers, urlParams} = config;
     return {
       type: TYPE,
-      oldType: type,
+      oldType: type || urlType,
       payload: {
         url,
         urlType,

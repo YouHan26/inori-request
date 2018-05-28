@@ -20,7 +20,12 @@ const configOption = (payload, action) => {
   let configData = {};
   if (urlType) {
     configData = staticUrlMapping[urlType];
+    console.error('没有找到此url常量', urlType);
+    if (!configData) {
+      configData = {};
+    }
   }
+  
   
   return {
     url: url || configData.getUrl(urlParams),
